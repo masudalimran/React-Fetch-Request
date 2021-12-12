@@ -1,4 +1,5 @@
 import React from "react";
+import Table from "./Table";
 
 export default function Posts({
   postsIsLoading,
@@ -7,16 +8,22 @@ export default function Posts({
   posts,
 }) {
   return (
-    <div style={{ color: "blue" }} className={postsTab ? "postsContent" : ""}>
+    <div className={postsTab ? "postsContent" : ""}>
       {!postsIsLoading ? (
         postsFetchError ? (
           <p style={{ color: "red" }}>{`Error: ${postsFetchError}`}</p>
         ) : postsTab ? (
-          <ul>
-            {posts.map((post) => (
-              <li key={post.id}>{JSON.stringify(post)}</li>
+          <table>
+            <tr>
+              <th>ID</th>
+              <th>User ID</th>
+              <th>Title</th>
+              <th>Post</th>
+            </tr>
+            {posts.map((data) => (
+              <Table key={data.id} data={data} />
             ))}
-          </ul>
+          </table>
         ) : (
           <></>
         )

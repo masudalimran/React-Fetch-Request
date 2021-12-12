@@ -1,4 +1,5 @@
 import React from "react";
+import Table from "./Table";
 
 export default function Comments({
   commentsIsLoading,
@@ -7,19 +8,23 @@ export default function Comments({
   comments,
 }) {
   return (
-    <div
-      style={{ color: "#916046" }}
-      className={commentsTab ? "commentsContent" : ""}
-    >
+    <div className={commentsTab ? "commentsContent" : ""}>
       {!commentsIsLoading ? (
         commentsFetchError ? (
           <p style={{ color: "red" }}>{`Error: ${commentsFetchError}`}</p>
         ) : commentsTab ? (
-          <ul>
-            {comments.map((comment) => (
-              <li key={comment.id}>{JSON.stringify(comment)}</li>
+          <table>
+            <tr>
+              <th>ID</th>
+              <th>Comment Title</th>
+              <th>Email</th>
+              <th>Comment ID</th>
+              <th>Comment</th>
+            </tr>
+            {comments.map((data) => (
+              <Table key={data.id} data={data} />
             ))}
-          </ul>
+          </table>
         ) : (
           <></>
         )

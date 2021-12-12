@@ -6,6 +6,7 @@
   top: 0;
   width: 100%;
 }
+
 .usersButton,
 .postsButton,
 .commentsButton {
@@ -17,13 +18,10 @@
 
 .usersButton:hover,
 .postsButton:hover,
-.commentsButton:hover {
-  background-color: black;
-  color: white;
-}
-.usersButton:focus,
-.postsButton:focus,
-.commentsButton:focus {
+.commentsButton:hover,
+.usersButton.active,
+.postsButton.active,
+.commentsButton.active {
   background-color: black;
   color: white;
 }
@@ -31,5 +29,22 @@
 .usersContent,
 .postsContent,
 .commentsContent {
-  padding-top: 35px;
+  padding-top: 3rem;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+}
+
+.FetchtableRow:nth-child(even) {
+  background-color: rgb(180, 179, 179);
 }

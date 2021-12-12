@@ -1,30 +1,54 @@
-import React from "react";
-
-export default function fetchtab({ setUsersTab, setPostsTab, setCommentsTab }) {
+export default function fetchtab({
+  setUsersTab,
+  setPostsTab,
+  setCommentsTab,
+  activeButton,
+  setActiveButton,
+}) {
   const enableUsers = () => {
     setUsersTab(true);
     setPostsTab(false);
     setCommentsTab(false);
+    setActiveButton("usersButton");
   };
   const enablePosts = () => {
     setUsersTab(false);
     setPostsTab(true);
     setCommentsTab(false);
+    setActiveButton("postsButton");
   };
   const enableComments = () => {
     setUsersTab(false);
     setPostsTab(false);
     setCommentsTab(true);
+    setActiveButton("commentsButton");
   };
   return (
     <div className="fetchTab">
-      <button className="usersButton" onClick={enableUsers}>
+      <button
+        className={
+          activeButton === "usersButton" ? "usersButton active" : "usersButton"
+        }
+        onClick={enableUsers}
+      >
         Users
       </button>
-      <button className="postsButton" onClick={enablePosts}>
+      <button
+        className={
+          activeButton === "postsButton" ? "postsButton active" : "postsButton"
+        }
+        onClick={enablePosts}
+      >
         Posts
       </button>
-      <button className="commentsButton" onClick={enableComments}>
+      <button
+        className={
+          activeButton === "commentsButton"
+            ? "commentsButton active"
+            : "commentsButton"
+        }
+        onClick={enableComments}
+      >
         Comments
       </button>
     </div>

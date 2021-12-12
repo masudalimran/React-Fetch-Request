@@ -1,4 +1,5 @@
 import React from "react";
+import Table from "./Table";
 
 export default function Users({
   usersIsLoading,
@@ -12,11 +13,21 @@ export default function Users({
         usersFetchError ? (
           <p style={{ color: "red" }}>{`Error: ${usersFetchError}`}</p>
         ) : usersTab ? (
-          <ul>
-            {users.map((user) => (
-              <li key={user.id}>{JSON.stringify(user)}</li>
+          <table>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Username</th>
+              <th>Company</th>
+              <th>Website</th>
+            </tr>
+            {users.map((data) => (
+              <Table key={data.id} data={data} />
             ))}
-          </ul>
+          </table>
         ) : (
           <></>
         )
